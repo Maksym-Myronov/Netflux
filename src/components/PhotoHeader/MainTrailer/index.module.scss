@@ -1,0 +1,45 @@
+.trailer {
+  padding: 10px 40px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    justify-content: center;
+    margin-top: 190px;
+  }
+
+  &__images {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__oval {
+    width: 70px;
+    height: 70px;
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    right: 14px;
+    top: 16px;
+  }
+
+  &__info {
+    color: white;
+  }
+
+  &__movie {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 20px 0;
+  }
+
+  &__data {
+    font-size: 1.5rem;
+  }
+
+}
