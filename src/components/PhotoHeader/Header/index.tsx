@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 //Images
 import logo from '../../../assets/images/Luxi-Fashion-Logo.svg'
 import settings from '../../../assets/images/android-settings.svg'
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     return (
         <div className={styles.header}>
             <div className={styles.header__links}>
-                <img src={logo} alt="logo" className={styles.header__logo} />
+                <img src={logo} alt="logo" className={styles.header__logo}/>
                 <button className={styles.header__featured}>Featured</button>
                 <ul className={styles.header__list}>
                     <Link to="/">
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
             <div className={styles.header__info}>
                 <button className={styles.header__login}>LOGIN</button>
                 <button className={styles.header__regist}>REGISTER</button>
-                <img src={settings} alt="settings" className={styles.header__settings} />
+                <img src={settings} alt="settings" className={styles.header__settings}/>
             </div>
         </div>
     );

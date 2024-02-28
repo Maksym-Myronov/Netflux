@@ -34,9 +34,7 @@ p {
   line-height: inherit;
 }
 
-p+p {
-  margin-top: 1em;
-}
+
 
 ul {
   list-style: none;
@@ -56,7 +54,6 @@ html, body {
 }
 
 body {
-  overflow: hidden;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   max-width: 1920px;
