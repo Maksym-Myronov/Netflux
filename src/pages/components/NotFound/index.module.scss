@@ -1,0 +1,172 @@
+.error {
+  padding: 10px 40px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  &__settings {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__featured {
+    background: #E91E63;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    gap: 30px;
+    color: black;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__login {
+    background: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  &__regist {
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    background: #C5CAE9;
+    color: #304FFE;
+    cursor: pointer;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 120px;
+  }
+
+  &__information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__images {
+    width: 300px;
+    height: 300px;
+  }
+
+  &__code {
+    color: #880E4F;
+    font-weight: 600;
+    font-size: 9rem;
+    position: absolute;
+    left: 30px;
+    margin-top: 35px;
+  }
+
+  &__block {
+    text-align: left;
+  }
+
+  &__message {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__solution {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.3rem;
+    margin: 20px 0 0 4px;
+  }
+
+  &__button {
+    background: none;
+    border: 1px solid rgba(233, 30, 99, 1);
+    color: rgba(233, 30, 99, 1);
+    border-radius: 25px;
+    padding: 7px 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 40px;
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 10px 40px;
+  justify-content: space-between;
+  margin-top: 200px;
+
+  &__social__media {
+    width: 40px;
+    height: 40px;
+    margin: 20px 10px;
+    cursor: pointer;
+  }
+
+  &__video {
+    margin-left: 15px;
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+
+  &__theme {
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+
+  &__logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  &__navigation {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  &__languege {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    width: 220px;
+    margin-left: 10px;
+    gap: 20px;
+    padding: 5px 10px;
+    border: 1px solid rgba(48, 79, 254, 1);
+  }
+
+  &__image {
+    width: 20px;
+    height: 20px;
+  }
+}

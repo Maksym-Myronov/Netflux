@@ -1,15 +1,16 @@
 import React from 'react';
 import Header from "./Header";
+import MainTrailer from "./MainTrailer";
 //Styles
 import styles from './index.module.scss'
-import MainTrailer from "./MainTrailer";
+import SliderCards from "./SliderCard";
 
 const PhotoHeader: React.FC = () => {
     return (
         <div className={styles.photo}>
             <Header />
             <MainTrailer />
-            {/*<MainTrailerInfo />*/}
+            <SliderCards />
         </div>
     );
 };
