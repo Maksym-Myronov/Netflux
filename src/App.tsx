@@ -1,17 +1,18 @@
-
-import {Route, Routes} from "react-router-dom";
-import PhotoHeader from "./components/PhotoHeader";
+import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/components/NotFound";
+import Main from "./components/Main";
 
 function App() {
-  return (
-    <>
-      <Routes>
-          <Route path="/" element={<PhotoHeader />} />
-          <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Main />}>
+
+                </Route>
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </>
+    );
 }
 
-export default App
+export default App;
