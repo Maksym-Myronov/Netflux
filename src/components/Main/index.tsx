@@ -1,7 +1,7 @@
 import React from 'react';
-import {SideBar} from "./SideBar";
+import { SideBar } from "./SideBar";
 
-const Main: React.FC = () => {
+export const Main: React.FC = () => {
     return (
         <div>
             <div>
@@ -10,5 +10,3 @@ const Main: React.FC = () => {
         </div>
     );
 };
-
-export default Main;

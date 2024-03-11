@@ -1,0 +1,145 @@
+.menu {
+  background: #21242D;
+  color: white;
+  padding: 40px 20px 20px 20px;
+  width: 300px;
+
+  &__profile, &__continue {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__name {
+    padding: 0 0 0 40px;
+  }
+
+  &__continue {
+    padding: 40px 0 20px 0;
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  &__see__more {
+    color: lightgray;
+    font-size: 0.9rem;
+  }
+
+  &__continue__text {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__movies {
+    background: #16181E;
+    width: 210px;
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  &__episode {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__drop__btn {
+    padding: 10px;
+    color: white;
+    background: #242323;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  &__block__button {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__watch__btn {
+    padding: 10px 45px;
+    color: black;
+    background: #00B9AE;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+  }
+
+  &__button {
+    background: none;
+  }
+
+  &__episode__text {
+    margin-top: 10px;
+    color: darkgrey;
+    font-size: 0.9rem;
+  }
+
+  &__movies__top {
+    background-image: url("src/assets/images/pictureMovie.svg");
+    background-repeat: no-repeat;
+    width: 210px;
+    padding: 12px;
+    border-radius: 15px;
+  }
+
+  &__top__rated {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  &__top__btn {
+    padding: 10px 15px;
+    color: white;
+    background: #242323;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  &__top__text {
+    color: darkgrey;
+    font-size: 0.9rem;
+  }
+
+  &__categories {
+    background-image: url("src/assets/images/pictureDrama.svg");
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    width: 210px;
+    height: 99px;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__categories__sitcom {
+    background-image: url("src/assets/images/Picturesitcom.svg");
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 210px;
+    height: 99px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+}
