@@ -14,6 +14,7 @@ import settingsImage from '../../../assets/images/Settings.svg';
 import logOutImage from '../../../assets/images/Log Out.svg';
 // Styles
 import styles from './index.module.scss'
+
 export const SideBar: React.FC = () => {
     return (
         <div className={styles.menu}>
@@ -67,7 +68,7 @@ export const SideBar: React.FC = () => {
                         <p>Completed</p>
                     </div>
                 </div>
-                <div className={styles.menu__list__items}>
+                <div className={styles.menu__list__items__general}>
                     <p className={styles.menu__category}>General</p>
                     <div className={styles.menu__block__category}>
                         <img src={settingsImage} alt="settingsImage" className={styles.menu__images}/>
