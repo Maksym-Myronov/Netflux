@@ -1,0 +1,32 @@
+.header {
+  color: white;
+  padding: 40px 70px 23px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__input__container {
+    display: flex;
+    background: #21242D;
+    padding: 13px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  &__input {
+    background: #21242D;
+    color: white;
+    outline: none;
+    font-size: 1rem;
+  }
+
+  &__images {
+    cursor: pointer;
+  }
+
+  &__link {
+    margin: 0 40px;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+}

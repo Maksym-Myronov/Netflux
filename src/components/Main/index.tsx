@@ -1,11 +1,20 @@
 import React from 'react';
-import { SideBar } from "./SideBar";
+import { Header } from "./Header";
+// Images
+
+// Styles
+import styles from './index.module.scss'
+import {MainSlider} from "./MainSlider";
+
 
 export const Main: React.FC = () => {
     return (
-        <div>
+        <div className={styles.main}>
             <div>
-                <SideBar />
+                <Header />
+            </div>
+            <div>
+                <MainSlider />
             </div>
         </div>
     );
