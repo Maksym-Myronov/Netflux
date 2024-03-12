@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchMovieData} from "../../../store/moviesSlice.ts";
 // Images
 import logo from '../../../assets/images/PicturemovieSlider.svg'
 import rightArrow from '../../../assets/images/right.svg'
@@ -10,6 +12,14 @@ import rick from '../../../assets/images/Picturerick.svg'
 import styles from './index.module.scss'
 
 export const MainSlider: React.FC   = () => {
+
+    const states = useSelector((state) => state.movie)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(fetchMovieData())
+    }, [dispatch])
+
     return (
         <div className={styles.slider}>
             <div className={styles.slider__container}>
