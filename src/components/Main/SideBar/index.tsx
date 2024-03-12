@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 // Images
 import homeImage from '../../../assets/images/Icon.svg';
 import discoverImage from '../../../assets/images/Discover.svg';
@@ -16,6 +17,9 @@ import logOutImage from '../../../assets/images/Log Out.svg';
 import styles from './index.module.scss'
 
 export const SideBar: React.FC = () => {
+
+    const {loginWithRedirect, isAuthenticated, logout} = useAuth0()
+
     return (
         <div className={styles.menu}>
             <div>
@@ -76,7 +80,11 @@ export const SideBar: React.FC = () => {
                     </div>
                     <div className={styles.menu__block__category}>
                         <img src={logOutImage} alt="logOutImage" className={styles.menu__images}/>
-                        <p>Log Out</p>
+                        {!isAuthenticated ? (
+                            <button onClick={() => loginWithRedirect()} className={styles.menu__button}>Sign In</button>
+                        ) : (
+                            <button onClick={() => logout()} className={styles.menu__button}>Log out</button>
+                        )}
                     </div>
                 </div>
             </div>

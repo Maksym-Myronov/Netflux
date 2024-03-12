@@ -32,4 +32,11 @@
     &__list__items {
       margin: 60px 0;
     }
+
+    &__button {
+      background: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
 }

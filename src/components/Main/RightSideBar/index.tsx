@@ -8,13 +8,17 @@ import lineImage from '../../../assets/images/Progress.svg';
 import movieImage from '../../../assets/images/Picture.svg';
 // Styles
 import styles from './index.module.scss'
+import {useAuth0} from "@auth0/auth0-react";
 
 export const RightSideBar: React.FC = () => {
+
+    const {user, isAuthenticated} = useAuth0()
+
     return (
         <div className={styles.menu}>
             <div className={styles.menu__profile}>
                 <img src={bell} alt="bell"/>
-                <p className={styles.menu__name}>Samantha</p>
+                <p className={styles.menu__name}>{isAuthenticated && user ? JSON.stringify(user.name) : null}</p>
                 <img src={iconLogo} alt="iconLogo"/>
             </div>
             <div className={styles.menu__continue}>
