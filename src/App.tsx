@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/components/NotFound";
 import { Layout } from "./components/Layout";
 import { Main } from "./components/Main";
+import {Sitcom} from "./pages/components/Sitcom";
 
 function App() {
     return (
@@ -9,6 +10,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Main />} />
+                    <Route path="sitcom" element={<Sitcom />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>

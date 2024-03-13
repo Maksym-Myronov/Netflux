@@ -72,6 +72,10 @@
     padding: 0 40px 0 0;
   }
 
+  &__cards {
+    border-radius: 15px;
+  }
+
   &__card__title {
     margin: 40px 0;
     font-size: 1.3rem;
@@ -79,7 +83,7 @@
   }
 
   &__episode__count {
-    margin: 150px 0 20px 0;
+    margin: 5px 0 160px 0;
   }
 
   &__episode__count, &__episode__btn {
@@ -94,7 +98,7 @@
   }
 
   &__plus__btn {
-    background: rgba(249, 249, 249, 0.2);
+    background: #898989;
     font-weight: 600;
     padding: 12px 20px;
     border-radius: 10px;
@@ -109,8 +113,9 @@
   }
 
   &__episode__name {
-    color: rgba(249, 249, 249, 0.7);
-    font-size: 0.9rem;
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
   }
 
   &__wathc__btn {
@@ -120,5 +125,11 @@
     border-radius: 10px;
     font-size: 1rem;
     cursor: pointer;
+  }
+
+  &__list__image {
+    width: 230px;
+    height: 300px;
+    border-radius: 15px;
   }
 }

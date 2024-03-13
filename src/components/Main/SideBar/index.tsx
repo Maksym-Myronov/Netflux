@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
+import {Link} from "react-router-dom";
 // Images
 import homeImage from '../../../assets/images/Icon.svg';
 import discoverImage from '../../../assets/images/Discover.svg';
@@ -30,7 +31,7 @@ export const SideBar: React.FC = () => {
                     <p className={styles.menu__category}>Menu</p>
                     <div className={styles.menu__block__category}>
                         <img src={homeImage} alt="homeImage" className={styles.menu__images}/>
-                        <p>Home</p>
+                        <Link to="/">Home</Link>
                     </div>
                     <div className={styles.menu__block__category}>
                         <img src={discoverImage} alt="discoverImage" className={styles.menu__images}/>
