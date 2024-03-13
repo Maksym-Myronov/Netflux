@@ -10,7 +10,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 export const fetchMovieData = createAsyncThunk(
     'movie/fetchMovieData',
     async () => {
-        const response = await fetch('https://api.themoviedb.org/3/search/movie?query=Spider-Man%3A%20No%20Way%20Home&include_adult=false&language=en-US&page=1', {
+        const response = await fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${API_KEY}`,

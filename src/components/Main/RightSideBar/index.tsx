@@ -1,4 +1,5 @@
 import React from 'react';
+import {useAuth0} from "@auth0/auth0-react";
 // Image
 import bell from '../../../assets/images/Notification.svg';
 import iconLogo from '../../../assets/images/Profile Picture.svg';
@@ -8,7 +9,7 @@ import lineImage from '../../../assets/images/Progress.svg';
 import movieImage from '../../../assets/images/Picture.svg';
 // Styles
 import styles from './index.module.scss'
-import {useAuth0} from "@auth0/auth0-react";
+import {Link} from "react-router-dom";
 
 export const RightSideBar: React.FC = () => {
 
@@ -18,7 +19,7 @@ export const RightSideBar: React.FC = () => {
         <div className={styles.menu}>
             <div className={styles.menu__profile}>
                 <img src={bell} alt="bell"/>
-                <p className={styles.menu__name}>{isAuthenticated && user ? JSON.stringify(user.name) : null}</p>
+                <p className={styles.menu__name}>{isAuthenticated && user ? JSON.stringify(user.given_name) : null}</p>
                 <img src={iconLogo} alt="iconLogo"/>
             </div>
             <div className={styles.menu__continue}>
@@ -82,9 +83,11 @@ export const RightSideBar: React.FC = () => {
             <div className={styles.menu__categories}>
                 <p>Drama</p>
             </div>
-            <div className={styles.menu__categories__sitcom}>
-                <p>Sitcom</p>
-            </div>
+            <Link to="sitcom">
+                <div className={styles.menu__categories__sitcom}>
+                    <p>Sitcom</p>
+                </div>
+            </Link>
         </div>
     );
 };
