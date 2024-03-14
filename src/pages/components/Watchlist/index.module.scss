@@ -1,0 +1,160 @@
+.watchlist{
+  background: #16181E;
+  width: 1220px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 1em;
+
+  &__parent {
+    color: white;
+    margin: 40px 30px 20px 40px;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__error__card {
+    background: white;
+    border-radius: 12px;
+    width: 900px;
+    height: 300px;
+    margin: 140px 40px 0 160px;
+    padding: 30px 0 0 0;
+    text-align: center;
+  }
+
+  &__error__title {
+    margin: 20px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  &__images {
+    width: 1090px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  &__scroll {
+    position: fixed;
+    padding: 30px 40px;
+  }
+
+  &__arrow__block {
+    margin: 80px 0 60px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__watch__btn {
+    display: flex;
+    width: 1000px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  &__left__arrow, &__right__arrow {
+    background: none;
+    padding: 10px 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgba(249, 249, 249, 0.2);
+  }
+
+  &__wathclist {
+    background: rgba(249, 249, 249, 0.2);
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  &__watch {
+    background: #00B9AE;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  &__slider__block {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 0 0;
+  }
+
+  &__cards {
+    border-radius: 15px;
+  }
+
+  &__card__title {
+    margin: 40px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  &__episode__count {
+    margin: 5px 0 160px 0;
+  }
+
+  &__episode__count, &__episode__btn {
+    display: flex;
+    justify-content: space-between;
+    width: 190px;
+  }
+
+  &__card {
+    position: fixed;
+    padding: 20px 30px;
+  }
+
+  &__plus__btn {
+    background: #898989;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  &__movie__name {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  &__episode__name {
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+  }
+
+  &__wathc__btn {
+    background: #00B9AE;
+    font-weight: 600;
+    padding: 5px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  &__list__image {
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
+  }
+}
