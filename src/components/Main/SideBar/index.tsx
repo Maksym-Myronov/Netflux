@@ -66,7 +66,7 @@ export const SideBar: React.FC = () => {
                     </div>
                     <div className={styles.menu__block__category}>
                         <img src={watchlistImage} alt="watchlistImage" className={styles.menu__images}/>
-                        <p>Watchlist</p>
+                        <Link to="watchlist">Watchlist</Link>
                     </div>
                     <div className={styles.menu__block__category}>
                         <img src={completedImage} alt="completedImage" className={styles.menu__images}/>

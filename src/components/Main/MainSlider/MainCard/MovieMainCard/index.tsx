@@ -1,10 +1,16 @@
 import React from 'react';
 // Styles
 import styles from "../../index.module.scss";
+import {useDispatch} from "react-redux";
+import {updateMovies} from "../../../../../store/watchListSlice.ts";
 
-const MovieMainCard: React.FC = ({ title, poster_path, voteAverage }) => {
+const MovieMainCard: React.FC = ({ id, title, poster_path, voteAverage }) => {
 
-    console.log(voteAverage)
+    const dispatch = useDispatch()
+
+    const handleAddMoviesToWatchlist = () => {
+        dispatch(updateMovies([{ id, title, poster_path, voteAverage }]));
+    }
 
     return (
         <div className={styles.slider__cards}>
@@ -15,7 +21,7 @@ const MovieMainCard: React.FC = ({ title, poster_path, voteAverage }) => {
                     <p className={styles.slider__episode__name}>{Math.ceil(voteAverage)}/10 stars</p>
                 </div>
                 <div className={styles.slider__episode__btn}>
-                    <button className={styles.slider__plus__btn}>+</button>
+                    <button onClick={handleAddMoviesToWatchlist} className={styles.slider__plus__btn}>+</button>
                     <button className={styles.slider__wathc__btn}>Watch</button>
                 </div>
             </div>
