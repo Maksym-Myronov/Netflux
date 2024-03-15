@@ -1,11 +1,8 @@
 import React from 'react';
-import { Header } from "./Header";
-// Images
-
+import { Header } from './Header';
+import { MainSlider } from './MainSlider';
 // Styles
-import styles from './index.module.scss'
-import {MainSlider} from "./MainSlider";
-
+import styles from './index.module.scss';
 
 export const Main: React.FC = () => {
     return (

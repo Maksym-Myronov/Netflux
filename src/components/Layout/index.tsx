@@ -1,9 +1,9 @@
 import React from 'react';
-import { Outlet } from "react-router-dom";
-import { SideBar } from "../Main/SideBar";
-import { RightSideBar } from "../Main/RightSideBar";
+import { Outlet } from 'react-router-dom';
+import { SideBar } from '../Main/SideBar';
+import { RightSideBar } from '../Main/RightSideBar';
 // Styles
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
 export const Layout: React.FC = () => {
     return (

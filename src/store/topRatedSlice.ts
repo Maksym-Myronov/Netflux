@@ -1,17 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 const initialState = {
-    list: [],
+    rated: [],
     status: 'idle',
     error: null,
 };
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-export const fetchMovieData = createAsyncThunk(
-    'movie/fetchMovieData',
+export const fetchTopRatedMovies = createAsyncThunk(
+    'topRated/fetchTopRatedMovies',
     async () => {
         const response = await fetch(
-            'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
+            'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
             {
                 method: 'GET',
                 headers: {
@@ -27,23 +28,23 @@ export const fetchMovieData = createAsyncThunk(
     }
 );
 
-const moviesSlice = createSlice({
-    name: 'movie',
+const topRatedSlice = createSlice({
+    name: 'topRated',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchMovieData.pending, (state) => {
+            .addCase(fetchTopRatedMovies.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchMovieData.fulfilled, (state, action) => {
+            .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.list = action.payload;
+                state.rated = action.payload;
             })
-            .addCase(fetchMovieData.rejected, (state) => {
+            .addCase(fetchTopRatedMovies.rejected, (state) => {
                 state.status = 'failed';
             });
-    },
+    }
 });
 
-export default moviesSlice.reducer;
+export default topRatedSlice.reducer;

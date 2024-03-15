@@ -1,22 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { removeMoviesFromArray } from '../../../../store/watchListSlice';
+import React from 'react';
 // Styles
-import styles from '../index.module.scss';
+import styles from '../../Watchlist/index.module.scss';
 
-interface ObjectData {
-    id: number | string;
-    title: string;
-    posterPath: string;
-    rating: number;
-}
-
-const WatchlistCards = ({ id, title, posterPath, rating }: ObjectData) => {
-    const dispatch = useDispatch();
-
-    const handleDeleteMoviesFromArray = () => {
-        dispatch(removeMoviesFromArray(id));
-    };
-
+export const TopRatedCards: React.FC = ({title, rating, posterPath}) => {
     return (
         <div className={styles.watchlist__parent}>
             <div className={styles.watchlist__cards}>
@@ -33,13 +19,7 @@ const WatchlistCards = ({ id, title, posterPath, rating }: ObjectData) => {
                         </p>
                     </div>
                     <div className={styles.watchlist__episode__btn}>
-                        <button
-                            onClick={handleDeleteMoviesFromArray}
-                            className={styles.watchlist__plus__btn}
-                        >
-                            -
-                        </button>
-                        <button className={styles.watchlist__wathc__btn}>
+                        <button className={styles.watchlist__watch__btn}>
                             Watch
                         </button>
                     </div>
@@ -53,5 +33,3 @@ const WatchlistCards = ({ id, title, posterPath, rating }: ObjectData) => {
         </div>
     );
 };
-
-export default WatchlistCards;

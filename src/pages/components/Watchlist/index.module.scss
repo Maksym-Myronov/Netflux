@@ -152,6 +152,18 @@
     cursor: pointer;
   }
 
+  &__watch__btn {
+    background: #00B9AE;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 10px;
+    margin: 0 20px 0 0;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+
   &__list__image {
     width: 250px;
     height: 300px;

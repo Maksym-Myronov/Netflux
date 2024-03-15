@@ -11,7 +11,7 @@
   }
 
   &__name {
-    padding: 0 0 0 40px;
+    font-weight: 600;
   }
 
   &__continue {
@@ -132,10 +132,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 170px;
+    height: 99px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__categories__thriller {
+    background-image: url("src/assets/images/scherlok.svg");
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 210px;
     height: 99px;
     font-weight: 600;
     cursor: pointer;
+  }
+
+  &__categories__superhero {
+    background-image: url("src/assets/images/Superhero.svg");
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 99px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__list {
+    display: flex;
+    gap: 20px;
   }
 
   button {
