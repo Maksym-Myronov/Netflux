@@ -169,4 +169,27 @@
     height: 300px;
     border-radius: 15px;
   }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+
+    &__number {
+      color: white;
+    }
+
+    &__prev {
+      background: white;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    &__next {
+      background: white;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+  }
 }
