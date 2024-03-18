@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
 import { fetchTopRatedMovies } from '../../../store/topRatedSlice';
 import { TopRatedCards } from './TopRatedCards';
-// Images
-import preBtn from '../../../assets/images/Prev.svg';
-import nextBtn from '../../../assets/images/Next.svg';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 // Styles
 import styles from '../Watchlist/index.module.scss';
 
 export const TopRated: React.FC = () => {
-    const topRatedMoviesList = useSelector((state) => state.topRatedMovies);
+    const topRatedMoviesList = useAppSelector((state) => state.topRatedMovies);
     const data: object[] = topRatedMoviesList.rated.results;
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage: number = 8;
@@ -18,24 +18,25 @@ export const TopRated: React.FC = () => {
     const endIndex: number = startIndex + itemsPerPage;
     const currentItems: object[] = data && data.slice(startIndex, endIndex);
 
-    const handlePreviousPage = () => {
-        if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
-
-    const handleNextPage = () => {
-        const totalPages = Math.ceil(data.length / itemsPerPage);
-        if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
-
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchTopRatedMovies());
     }, [dispatch]);
+    const handlePaginationChange = (event: React.ChangeEvent<unknown>, page: number) => {
+        setCurrentPage(page);
+    };
+
+    const theme = createTheme({
+        palette: {
+            ochre: {
+                main: '#E3D026',
+                light: '#fff',
+                dark: '#A29415',
+                contrastText: '#242105',
+            },
+        },
+    });
 
     return (
         <div className={styles.watchlist}>
@@ -49,15 +50,19 @@ export const TopRated: React.FC = () => {
                     />
                 ))}
             <div className={styles.watchlist__pagination}>
-                <button onClick={handlePreviousPage} className={styles.watchlist__pagination__prev}>
-                    <img src={preBtn}  alt="nextBtn" />
-                </button>
-                <p className={styles.watchlist__pagination__number}>
-                    {currentPage}
-                </p>
-                <button onClick={handleNextPage} className={styles.watchlist__pagination__next}>
-                    <img src={nextBtn} alt="preBtn" />
-                </button>
+                <ThemeProvider theme={theme}>
+                    <Stack spacing={2}>
+                        <Pagination
+                            count={Math.ceil(data && data.length / itemsPerPage)}
+                            shape="rounded"
+                            page={currentPage}
+                            onChange={handlePaginationChange}
+                            variant="outlined"
+                            className={styles.whiteText}
+                            sx={{ bgcolor: 'ochre.light' }}
+                        />
+                    </Stack>
+                </ThemeProvider>
             </div>
         </div>
     );

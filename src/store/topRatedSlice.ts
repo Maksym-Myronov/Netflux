@@ -1,8 +1,14 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const initialState = {
+type Movie = {
+    rated: object[];
+    status: string;
+    error: null;
+};
+
+const initialState: Movie = {
     rated: [],
     status: 'idle',
     error: null,
@@ -37,14 +43,17 @@ const topRatedSlice = createSlice({
             .addCase(fetchTopRatedMovies.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchTopRatedMovies.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.rated = action.payload;
-            })
+            .addCase(
+                fetchTopRatedMovies.fulfilled,
+                (state, action: PayloadAction<object[]>) => {
+                    state.status = 'succeeded';
+                    state.rated = action.payload;
+                }
+            )
             .addCase(fetchTopRatedMovies.rejected, (state) => {
                 state.status = 'failed';
             });
-    }
+    },
 });
 
 export default topRatedSlice.reducer;
