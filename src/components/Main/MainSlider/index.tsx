@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { fetchMovieData } from '../../../store/moviesSlice';
 import { MainCard } from './MainCard';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
 // Images
 import logo from '../../../assets/images/PicturemovieSlider.svg';
 import rightArrow from '../../../assets/images/right.svg';
@@ -10,11 +10,10 @@ import leftArrow from '../../../assets/images/left.svg';
 import styles from './index.module.scss';
 
 export const MainSlider: React.FC = () => {
-    const states = useSelector((state) => state.movie);
+    const states = useAppSelector((state) => state.movie);
     const newMoviesArray = states.list.results;
     const newValueOfListArray = newMoviesArray && newMoviesArray.slice(0, 4);
-    const dispatch = useDispatch();
-    console.log(newMoviesArray);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchMovieData());

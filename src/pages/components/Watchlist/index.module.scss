@@ -171,8 +171,9 @@
   }
 
   &__pagination {
-    display: flex;
-    align-items: center;
+    position: absolute;
+    top: 850px;
+    left: 850px;
 
     &__number {
       color: white;
@@ -192,4 +193,8 @@
       cursor: pointer;
     }
   }
+}
+
+.whiteText {
+  color: white !important;
 }

@@ -1,6 +1,12 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = {
+type MovieList = {
+    list: object[];
+    status: string;
+    error: null;
+};
+
+const initialState: MovieList = {
     list: [],
     status: 'idle',
     error: null,
@@ -36,10 +42,13 @@ const moviesSlice = createSlice({
             .addCase(fetchMovieData.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchMovieData.fulfilled, (state, action) => {
-                state.status = 'succeeded';
-                state.list = action.payload;
-            })
+            .addCase(
+                fetchMovieData.fulfilled,
+                (state, action: PayloadAction<object[]>) => {
+                    state.status = 'succeeded';
+                    state.list = action.payload;
+                }
+            )
             .addCase(fetchMovieData.rejected, (state) => {
                 state.status = 'failed';
             });

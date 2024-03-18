@@ -1,6 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface Movie {
+    id: number;
+    title: string;
+    poster_path: string;
+    voteAverage: number;
+}
+
+type Movies = {
+    movies: Movie[];
+};
+
+const initialState: Movies = {
     movies: [],
 };
 
@@ -8,17 +19,13 @@ const watchListSlice = createSlice({
     name: 'watchList',
     initialState,
     reducers: {
-        updateMovies: (state, action) => {
-            action.payload.forEach((item) => {
-                const isDuplicate = state.movies.some(
-                    (items) => items.id === item.id
-                );
-                if (!isDuplicate) {
-                    return state.movies.push(...action.payload);
-                }
-            });
+        updateMovies: (state, action: PayloadAction<Movie[]>) => {
+            const uniqueMovies = action.payload.filter(
+                (item) => !state.movies.some((movie) => movie.id === item.id)
+            );
+            state.movies.push(...uniqueMovies);
         },
-        removeMoviesFromArray: (state, action) => {
+        removeMoviesFromArray: (state, action: PayloadAction<number>) => {
             state.movies = state.movies.filter(
                 (item) => item.id !== action.payload
             );
