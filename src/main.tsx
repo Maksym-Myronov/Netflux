@@ -6,7 +6,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import App from './App';
 import { store } from './store';
 import './index.scss';
-
+import { StyledEngineProvider } from '@mui/material/styles';
 const domain = import.meta.env.VITE_AUTH0_DOMAIN;
 const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID;
 
@@ -21,7 +21,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                         redirect_uri: 'http://localhost:5173/',
                     }}
                 >
-                    <App />
+                    <StyledEngineProvider injectFirst>
+                        <App />
+                    </StyledEngineProvider>
+
                 </Auth0Provider>
             </Provider>
         </BrowserRouter>
