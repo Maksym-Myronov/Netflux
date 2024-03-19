@@ -1,9 +1,11 @@
+@import '../../../styles/variablse';
+@import '../../../styles/mixins';
+
 .header {
-  color: white;
+  color: $white;
   padding: 40px 70px 23px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include d-flex(null, space-between, center);
+
 
   &__input__container {
     display: flex;
@@ -15,7 +17,7 @@
 
   &__input {
     background: #21242D;
-    color: white;
+    color: $white;
     outline: none;
     font-size: 1rem;
   }

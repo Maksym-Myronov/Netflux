@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
 import { fetchTopRatedMovies } from '../../../store/topRatedSlice';
 import { TopRatedCards } from './TopRatedCards';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 // Styles
 import styles from '../Watchlist/index.module.scss';
 
@@ -29,11 +29,17 @@ export const TopRated: React.FC = () => {
 
     const theme = createTheme({
         palette: {
-            ochre: {
+            primary: {
                 main: '#E3D026',
                 light: '#fff',
                 dark: '#A29415',
                 contrastText: '#242105',
+            },
+            background: {
+                default: '#fff',
+            },
+            text: {
+                primary: '#000',
             },
         },
     });
@@ -58,8 +64,18 @@ export const TopRated: React.FC = () => {
                             page={currentPage}
                             onChange={handlePaginationChange}
                             variant="outlined"
-                            className={styles.whiteText}
-                            sx={{ bgcolor: 'ochre.light' }}
+                            sx={{
+                                '& .MuiPaginationItem-page': { color: 'white' },
+                                '& .MuiPaginationItem-page.Mui-selected': {
+                                    color: '#E3D026',
+                                },
+                                '& .MuiPaginationItem-root': {
+                                    borderColor: 'white',
+                                },
+                                '& .MuiSvgIcon-root': {
+                                    fill: 'white',
+                                },
+                            }}
                         />
                     </Stack>
                 </ThemeProvider>

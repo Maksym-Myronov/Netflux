@@ -1,10 +1,11 @@
+@import '../../../styles/variablse';
+@import '../../../styles/mixins';
+
 .error {
   padding: 10px 40px;
 
   &__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include d-flex(null, space-between, center);
   }
 
   &__logo {
@@ -19,8 +20,7 @@
   }
 
   &__links {
-    display: flex;
-    align-items: center;
+    @include d-flex(null, null, center);
     gap: 30px;
   }
 
@@ -41,8 +41,7 @@
   }
 
   &__info {
-    display: flex;
-    align-items: center;
+    @include d-flex(null, null, center);
     gap: 30px;
   }
 
@@ -63,17 +62,13 @@
   }
 
   &__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 100px;
     margin-top: 120px;
+    @include d-flex(null, center, center);
   }
 
   &__information {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include d-flex(null, space-between, center);
     position: relative;
   }
 
@@ -120,9 +115,8 @@
 }
 
 .footer {
-  display: flex;
   padding: 10px 40px;
-  justify-content: space-between;
+  @include d-flex(null, space-between, null);
   margin-top: 200px;
 
   &__social__media {
@@ -155,9 +149,8 @@
   }
 
   &__languege {
-    display: flex;
-    align-items: center;
     border-radius: 6px;
+    @include d-flex(null, null, center);
     width: 220px;
     margin-left: 10px;
     gap: 20px;

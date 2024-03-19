@@ -1,11 +1,13 @@
+@import '../../../styles/variablse';
+@import '../../../styles/mixins';
+
 .watch {
   background: #16181E;
   width: 1220px;
-  color: white;
+  color: $white;
 
   &__container {
-    display: flex;
-    justify-content: space-between;
+    @include d-flex(null, space-between, null);
     padding: 40px 20px 40px 20px;
   }
 

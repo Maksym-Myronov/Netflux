@@ -1,13 +1,14 @@
+@import '../../../styles/variablse';
+@import '../../../styles/mixins';
+
 .menu {
   background: #21242D;
-  color: white;
+  color: $white;
   padding: 40px 20px 20px 20px;
   width: 400px;
 
   &__profile, &__continue {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include d-flex(null, space-between, center);
   }
 
   &__name {
@@ -19,10 +20,9 @@
   }
 
   &__slider {
-    display: flex;
-    align-items: center;
     gap: 10px;
     text-align: center;
+    @include d-flex(null, null, center);
   }
 
   &__see__more {
@@ -49,7 +49,7 @@
 
   &__drop__btn {
     padding: 10px;
-    color: white;
+    color: $white;
     background: #242323;
     cursor: pointer;
     border-radius: 6px;
@@ -64,7 +64,7 @@
 
   &__watch__btn {
     padding: 10px 45px;
-    color: black;
+    color: $black;
     background: #00B9AE;
     cursor: pointer;
     border-radius: 6px;
@@ -90,15 +90,14 @@
   }
 
   &__top__rated {
-    display: flex;
     gap: 28px;
-    align-items: center;
+    @include d-flex(null, null, center);
     margin-top: 10px;
   }
 
   &__top__btn {
     padding: 10px 15px;
-    color: white;
+    color: $white;
     background: #242323;
     cursor: pointer;
     border-radius: 6px;
@@ -118,10 +117,8 @@
     width: 210px;
     height: 99px;
     margin: 0 0 20px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-weight: 600;
+    @include d-flex(null, center, center);
     cursor: pointer;
   }
 
@@ -129,22 +126,18 @@
     background-image: url("src/assets/images/Picturesitcom.svg");
     background-repeat: no-repeat;
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 170px;
     height: 99px;
     font-weight: 600;
     cursor: pointer;
+    @include d-flex(null, center, center);
   }
 
   &__categories__thriller {
     background-image: url("src/assets/images/scherlok.svg");
     background-repeat: no-repeat;
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include d-flex(null, center, center);
     width: 210px;
     height: 99px;
     font-weight: 600;
@@ -155,9 +148,7 @@
     background-image: url("src/assets/images/Superhero.svg");
     background-repeat: no-repeat;
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include d-flex(null, center, center);
     width: 170px;
     height: 99px;
     font-weight: 600;

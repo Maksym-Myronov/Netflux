@@ -1,3 +1,6 @@
+@import '../../../styles/variablse';
+@import '../../../styles/mixins';
+
 .watchlist{
   background: #16181E;
   width: 1220px;
@@ -7,7 +10,7 @@
   grid-row-gap: 1em;
 
   &__parent {
-    color: white;
+    color: $white;
     margin: 40px 30px 20px 40px;
   }
 
@@ -16,7 +19,7 @@
   }
 
   &__error__card {
-    background: white;
+    background: $white;
     border-radius: 12px;
     width: 900px;
     height: 300px;
@@ -45,15 +48,12 @@
 
   &__arrow__block {
     margin: 80px 0 60px 0;
-    display: flex;
-    justify-content: space-between;
+    @include d-flex(null, space-between, null);
   }
 
   &__watch__btn {
-    display: flex;
     width: 1000px;
-    align-items: center;
-    justify-content: space-between;
+    @include d-flex(null, space-between, center);
   }
 
   &__title {
@@ -78,7 +78,7 @@
     border-radius: 10px;
     font-size: 1.5rem;
     cursor: pointer;
-    color: white;
+    color: $white;
   }
 
   &__watch {
@@ -92,8 +92,7 @@
 
   &__slider__block {
     position: relative;
-    display: flex;
-    justify-content: space-between;
+    @include d-flex(null, space-between, null);
     padding: 0 40px 0 0;
   }
 
@@ -112,8 +111,7 @@
   }
 
   &__episode__count, &__episode__btn {
-    display: flex;
-    justify-content: space-between;
+    @include d-flex(null, space-between, null);
     width: 190px;
   }
 
@@ -139,7 +137,7 @@
 
   &__episode__name {
     font-size: 1rem;
-    color: white;
+    color: $white;
     font-weight: 600;
   }
 
@@ -160,8 +158,7 @@
     margin: 0 20px 0 0;
     font-size: 1rem;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
+    @include d-flex(null, center, null);
   }
 
   &__list__image {
@@ -176,18 +173,18 @@
     left: 850px;
 
     &__number {
-      color: white;
+      color: $white;
     }
 
     &__prev {
-      background: white;
+      background: $white;
       width: 30px;
       height: 30px;
       cursor: pointer;
     }
 
     &__next {
-      background: white;
+      background: $white;
       width: 30px;
       height: 30px;
       cursor: pointer;
