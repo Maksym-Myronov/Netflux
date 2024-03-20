@@ -17,6 +17,7 @@ export const WatchMovie: React.FC = () => {
             height: '390',
             width: '1180',
         };
+        console.log(movies);
 
         const firstTrailerInArray =
             movies &&
@@ -24,6 +25,15 @@ export const WatchMovie: React.FC = () => {
             movies.trailer.videos &&
             movies.trailer.videos.results &&
             movies.trailer.videos.results[0];
+
+        const secondTrailerInArray =
+            movies &&
+            movies.trailer &&
+            movies.trailer.videos &&
+            movies.trailer.videos.results &&
+            movies.trailer.videos.results[1];
+
+        const titleName = movies && movies.trailer && movies.trailer.original_title === 'The Godfather' ? secondTrailerInArray : firstTrailerInArray;
 
         if (OfficialTrailer) {
             const trailer = movies.trailer.videos.results.find(
@@ -33,7 +43,7 @@ export const WatchMovie: React.FC = () => {
             if (trailer) {
                 return <YouTube videoId={trailer.key} opts={opts} />;
             }
-            return <YouTube videoId={firstTrailerInArray.key} opts={opts} />;
+            return <YouTube videoId={titleName.key} opts={opts} />;
         }
         return null;
     };
