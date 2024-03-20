@@ -9,8 +9,8 @@ import { TopRatedCards } from './TopRatedCards';
 import styles from '../Watchlist/index.module.scss';
 
 export const TopRated: React.FC = () => {
-    const topRatedMoviesList = useAppSelector((state) => state.topRatedMovies);
-    const data: object[] = topRatedMoviesList.rated.results;
+    const topRatedMoviesList = useAppSelector((state) => state.topRatedMovies.rated);
+    const data: object[] = topRatedMoviesList && topRatedMoviesList.results;
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage: number = 8;
 
@@ -50,6 +50,7 @@ export const TopRated: React.FC = () => {
                 currentItems.map((item) => (
                     <TopRatedCards
                         key={item.id}
+                        id={item.id}
                         title={item.title}
                         posterPath={item.poster_path}
                         rating={item.vote_average}

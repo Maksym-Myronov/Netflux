@@ -37,7 +37,7 @@ const MovieMainCard: React.FC<Card> = ({
                     {title.length > 17 ? `${title.slice(0, 15)}...` : title}
                 </p>
                 <div className={styles.slider__episode__count}>
-                    <p className={styles.slider__episode__name}>Reating</p>
+                    <p className={styles.slider__episode__name}>Rating</p>
                     <p className={styles.slider__episode__name}>
                         {Math.ceil(voteAverage)}/10 stars
                     </p>

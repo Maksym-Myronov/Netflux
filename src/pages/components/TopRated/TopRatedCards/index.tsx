@@ -1,8 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { fetchTrailer } from '../../../../store/trailerSlice';
+import { useAppDispatch } from '../../../../hooks/useStore';
 // Styles
 import styles from '../../Watchlist/index.module.scss';
 
-export const TopRatedCards: React.FC = ({title, rating, posterPath}) => {
+export const TopRatedCards: React.FC = ({title, rating, posterPath, id}) => {
+
+    const dispatch = useAppDispatch();
+    const handleAddIdToFunction = (idNumber: number) => {
+        dispatch(fetchTrailer(idNumber));
+    };
+
     return (
         <div className={styles.watchlist__parent}>
             <div className={styles.watchlist__cards}>
@@ -19,9 +28,11 @@ export const TopRatedCards: React.FC = ({title, rating, posterPath}) => {
                         </p>
                     </div>
                     <div className={styles.watchlist__episode__btn}>
-                        <button className={styles.watchlist__watch__btn}>
-                            Watch
-                        </button>
+                        <Link to="/watchTrailer">
+                            <button className={styles.watchlist__watch} onClick={() => handleAddIdToFunction(id)}>
+                                Watch
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <img
