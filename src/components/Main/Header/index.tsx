@@ -1,29 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
-import { fetchSearchMovie } from '../../../store/searchMovieSlice';
-import { fetchTrailer } from '../../../store/trailerSlice';
+import { ShowDataInInput } from './ShowDataInInput';
+import { useInputData } from '../../../hooks/useInputData';
+import { useIdFunction } from '../../../hooks/useIdFunction';
 // Images
 import searchImage from '../../../assets/images/Search....svg';
 import filterImage from '../../../assets/images/Filter.svg';
 // Styles
 import styles from './index.module.scss';
 
-export const Header: React.FC = () => {
-    const [text, setText] = useState('');
-    const dispatch = useAppDispatch();
-    const searchMovie = useAppSelector((state) => state.search);
-    const IMAGE_PATH_URL: string = 'https://image.tmdb.org/t/p/w500';
-    const onInputChange = (e) => {
-        e.preventDefault();
-        const { value } = e.target;
-        setText(value);
-        dispatch(fetchSearchMovie(value));
-    };
 
-    const handleAddIdToFunction = (idNumber: number) => {
-        dispatch(fetchTrailer(idNumber));
-    };
+
+export const Header: React.FC = () => {
+    const [handleAddIdToFunction] = useIdFunction();
+    const [onInputChange, sortedMoviesArray, text, searchMovie] = useInputData();
 
     return (
         <div className={styles.header}>
@@ -56,60 +46,27 @@ export const Header: React.FC = () => {
                             <ul className={styles.header__list}>
                                 {searchMovie?.search?.results
                                     ?.slice(0, 3)
-                                    .map((item) => (
-                                        <Link
-                                            to="/watchTrailer"
-                                            onClick={() =>
-                                                handleAddIdToFunction(item.id)
+                                    .map((search) => (
+                                        <ShowDataInInput
+                                            key={search.id}
+                                            id={search.id}
+                                            posterPath={search.poster_path}
+                                            title={search.title}
+                                            releaseDate={search.release_date}
+                                            handleAddIdToFunction={
+                                                handleAddIdToFunction
                                             }
-                                            key={item.id}
-                                        >
-                                            <div
-                                                className={
-                                                    styles.header__search
-                                                }
-                                            >
-                                                <img
-                                                    src={`${IMAGE_PATH_URL}${item.poster_path}`}
-                                                    alt="poster"
-                                                    style={{
-                                                        width: '50px',
-                                                        height: '70px',
-                                                    }}
-                                                />
-                                                <div>
-                                                    <li
-                                                        className={
-                                                            styles.header__title
-                                                        }
-                                                    >
-                                                        {item.title.slice(
-                                                            0,
-                                                            20
-                                                        )}
-                                                    </li>
-                                                    <span
-                                                        className={
-                                                            styles.header__search__span
-                                                        }
-                                                    >
-                                                        {item.release_date.slice(
-                                                            0,
-                                                            4
-                                                        )}
-                                                    </span>
-                                                    <p
-                                                        className={
-                                                            styles.header__search__cost
-                                                        }
-                                                    >
-                                                        FOR FREE
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </Link>
+                                        />
                                     ))}
-                                <Link to="/"><span className={styles.header__search__results}>ALL RESULTS</span></Link>
+                                <Link to="/allRedults">
+                                    <span
+                                        className={
+                                            styles.header__search__results
+                                        }
+                                    >
+                                        ALL RESULTS
+                                    </span>
+                                </Link>
                             </ul>
                         )}
                     </div>

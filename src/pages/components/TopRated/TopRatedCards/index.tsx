@@ -1,16 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchTrailer } from '../../../../store/trailerSlice';
-import { useAppDispatch } from '../../../../hooks/useStore';
+import { useIdFunction } from '../../../../hooks/useIdFunction';
 // Styles
 import styles from '../../Watchlist/index.module.scss';
 
 export const TopRatedCards: React.FC = ({title, rating, posterPath, id}) => {
-
-    const dispatch = useAppDispatch();
-    const handleAddIdToFunction = (idNumber: number) => {
-        dispatch(fetchTrailer(idNumber));
-    };
+    const [handleAddIdToFunction] = useIdFunction();
 
     return (
         <div className={styles.watchlist__parent}>
