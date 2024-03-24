@@ -3,12 +3,14 @@
 
 .watch {
   background: #16181E;
-  width: 1220px;
+  max-width: 1220px;
+  width: 100%;
   color: $white;
+  margin: 0 auto;
 
   &__container {
     @include d-flex(null, space-between, null);
-    padding: 40px 20px 40px 20px;
+    padding: 40px 20px;
   }
 
   &__image {
@@ -19,14 +21,15 @@
   &__title {
     font-size: 1.5rem;
     font-weight: 600;
-    margin: 10px 0  40px 0;
+    margin: 10px 0 40px;
   }
 
   &__article {
-    width: 480px;
+    max-width: 780px;
     overflow-wrap: break-word;
     line-height: 28px;
     font-size: 1.2rem;
+    background: linear-gradient(blue, 10%, pink);
   }
 
   &__youtube {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../../../../hooks/useStore';
 import { updateMovies } from '../../../../../store/watchListSlice';
-import { fetchTrailer } from '../../../../../store/trailerSlice';
+import { useIdFunction } from '../../../../../hooks/useIdFunction';
 // Styles
 import styles from '../../index.module.scss';
 
@@ -20,12 +20,10 @@ const MovieMainCard: React.FC<Card> = ({
     voteAverage,
 }) => {
     const dispatch = useAppDispatch();
+    const [handleAddIdToFunction] = useIdFunction();
 
     const handleAddMoviesToWatchlist = () => {
         dispatch(updateMovies([{ id, title, poster_path, voteAverage }]));
-    };
-    const handleAddIdToFunction = (idNumber: number) => {
-        dispatch(fetchTrailer(idNumber));
     };
 
     const IMAGE_PATH_URL: string = 'https://image.tmdb.org/t/p/w500/';

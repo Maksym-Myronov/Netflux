@@ -6,6 +6,7 @@ import { Sitcom } from './pages/components/Sitcom';
 import { Watchlist } from './pages/components/Watchlist';
 import { TopRated } from './pages/components/TopRated';
 import { WatchMovie } from './pages/components/WatchMovie';
+import { Results } from './pages/components/Results';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="watchlist" element={<Watchlist />} />
                 <Route path="toprated" element={<TopRated />} />
                 <Route path="watchTrailer" element={<WatchMovie />} />
+                <Route path="allRedults" element={<Results />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>

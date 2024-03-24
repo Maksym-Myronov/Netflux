@@ -1,36 +1,34 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Movie {
-    id: number;
-    title: string;
-    poster_path: string;
-    voteAverage: number;
+	id: number;
+	title: string;
+	poster_path: string;
+	voteAverage: number;
 }
 
-type Movies = {
-    movies: Movie[];
+export type Movies = {
+	movies: Movie[];
 };
 
 const initialState: Movies = {
-    movies: [],
+	movies: []
 };
 
 const watchListSlice = createSlice({
-    name: 'watchList',
-    initialState,
-    reducers: {
-        updateMovies: (state, action: PayloadAction<Movie[]>) => {
-            const uniqueMovies = action.payload.filter(
-                (item) => !state.movies.some((movie) => movie.id === item.id)
-            );
-            state.movies.push(...uniqueMovies);
-        },
-        removeMoviesFromArray: (state, action: PayloadAction<number>) => {
-            state.movies = state.movies.filter(
-                (item) => item.id !== action.payload
-            );
-        },
-    },
+	name: 'watchList',
+	initialState,
+	reducers: {
+		updateMovies: (state, action: PayloadAction<Movie[]>) => {
+			const uniqueMovies = action.payload.filter(
+				(item) => !state.movies.some((movie) => movie.id === item.id)
+			);
+			state.movies.push(...uniqueMovies);
+		},
+		removeMoviesFromArray: (state, action: PayloadAction<number>) => {
+			state.movies = state.movies.filter((item) => item.id !== action.payload);
+		}
+	}
 });
 
 export default watchListSlice.reducer;
