@@ -11,6 +11,7 @@
   &__container {
     @include d-flex(null, space-between, null);
     padding: 40px 20px;
+    height: 400px;
   }
 
   &__image {
@@ -22,6 +23,8 @@
     font-size: 1.5rem;
     font-weight: 600;
     margin: 10px 0 40px;
+    max-width: 780px;
+    overflow-wrap: break-word;
   }
 
   &__article {
@@ -29,10 +32,29 @@
     overflow-wrap: break-word;
     line-height: 28px;
     font-size: 1.2rem;
-    background: linear-gradient(blue, 10%, pink);
+    height: 76%;
+    padding: 15px;
+    border-radius: 10px;
+    background: #21242D;
   }
 
   &__youtube {
     padding: 0 20px;
+    margin-top: 60px;
+  }
+
+  &__movie {
+    background-image: url("src/assets/images/Bg.svg");
+    background-repeat: no-repeat;
+    height: 395px;
+    margin-left: 180px;
+
+    &__error {
+      color: black;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 180px 0 0 50px;
+      margin: 50px 0;
+    }
   }
 }
