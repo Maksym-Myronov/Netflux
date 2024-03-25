@@ -27,7 +27,6 @@ export const Results: React.FC = () => {
 	const startIndex: number = (currentPage - 1) * itemsPerPage;
 	const endIndex: number = startIndex + itemsPerPage;
 	const currentItems: MovieData[] = data && data.slice(startIndex, endIndex);
-
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {

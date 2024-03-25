@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Images
+import notFoundImage from '../../../../assets/images/7422bfe15b3ea7b5933dffd896e9c7f9_46003a1b7353dc7b5a02949bd074432a.webp';
 // Styles
 import styles from '../../Watchlist/index.module.scss';
 
@@ -16,6 +18,10 @@ export const NewResults: React.FC<ResultProps> = ({
 	posterPath,
 	handleAddIdToFunction
 }) => {
+	const posterImage = posterPath
+		? `https://image.tmdb.org/t/p/w500/${posterPath}`
+		: notFoundImage;
+
 	return (
 		<div className={styles.watchlist__parent}>
 			<div className={styles.watchlist__cards}>
@@ -39,7 +45,7 @@ export const NewResults: React.FC<ResultProps> = ({
 					</div>
 				</div>
 				<img
-					src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
+					src={posterImage}
 					alt="rick"
 					className={styles.watchlist__list__image}
 				/>

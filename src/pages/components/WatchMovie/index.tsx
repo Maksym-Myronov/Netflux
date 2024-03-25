@@ -3,6 +3,7 @@ import YouTube from 'react-youtube';
 import { useAppSelector } from '../../../hooks/useStore';
 // Styles
 import styles from './index.module.scss';
+import { WatchMovieYouTube } from './WatchMovieYouTube';
 
 export const WatchMovie: React.FC = () => {
 	const movies = useAppSelector((state) => state.trailer);
@@ -13,10 +14,8 @@ export const WatchMovie: React.FC = () => {
 			height: '390',
 			width: '1180'
 		};
-		console.log(movies);
 
 		const firstTrailerInArray = movies?.trailer?.videos?.results[0];
-		console.log(firstTrailerInArray);
 		const secondTrailerInArray = movies?.trailer?.videos?.results[1];
 
 		const titleName =
@@ -35,6 +34,9 @@ export const WatchMovie: React.FC = () => {
 			if (titleName) {
 				return <YouTube videoId={titleName.key} opts={opts} />;
 			}
+			if (!trailer && !titleName) {
+				return <WatchMovieYouTube />;
+			}
 			return null;
 		}
 		return null;
@@ -43,7 +45,7 @@ export const WatchMovie: React.FC = () => {
 	const IMAGE_PATH_URL: string = 'https://image.tmdb.org/t/p/w500';
 	const imagePosterPath: string = movies?.trailer?.poster_path;
 	const articleOverview = movies?.trailer?.overview;
-	console.log(movies);
+
 	return (
 		<div className={styles.watch}>
 			<div className={styles.watch__container}>

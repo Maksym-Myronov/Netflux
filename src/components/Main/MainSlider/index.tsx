@@ -11,8 +11,9 @@ import styles from './index.module.scss';
 
 export const MainSlider: React.FC = () => {
 	const states = useAppSelector((state) => state.movie);
+	console.log(states);
 	const newMoviesArray = states.list.results;
-	const newValueOfListArray = newMoviesArray && newMoviesArray.slice(0, 4);
+	const newValueOfListArray = newMoviesArray?.slice(0, 4);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
+import { fetchGenresId } from '../../../store/genresIdSlice';
 // Images
 import bell from '../../../assets/images/Notification.svg';
 import iconLogo from '../../../assets/images/Profile Picture.svg';
@@ -10,9 +12,18 @@ import lineImage from '../../../assets/images/Progress.svg';
 import movieImage from '../../../assets/images/Picture.svg';
 // Styles
 import styles from './index.module.scss';
+import { fetchGenresMovies } from '../../../store/genresSlice';
 
 export const RightSideBar: React.FC = () => {
 	const { user, isAuthenticated } = useAuth0();
+	const genresList = useAppSelector((state) => state.genres);
+	const genresId = useAppSelector((state) => state.genresId);
+	const dispatch = useAppDispatch();
+	useEffect(() => {
+		dispatch(fetchGenresMovies());
+		dispatch(fetchGenresId());
+	}, [dispatch]);
+	const genresImages = genresId?.genresId?.genres?.map((item) => item.name);
 
 	const userName: string =
 		user && user.given_name

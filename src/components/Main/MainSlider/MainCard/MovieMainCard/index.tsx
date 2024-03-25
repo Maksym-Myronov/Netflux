@@ -7,63 +7,60 @@ import { useIdFunction } from '../../../../../hooks/useIdFunction';
 import styles from '../../index.module.scss';
 
 interface Card {
-    id: number;
-    title: string;
-    poster_path: string;
-    voteAverage: number;
+	id: number;
+	title: string;
+	poster_path: string;
+	voteAverage: number;
 }
 
 const MovieMainCard: React.FC<Card> = ({
-    id,
-    title,
-    poster_path,
-    voteAverage,
+	id,
+	title,
+	poster_path,
+	voteAverage
 }) => {
-    const dispatch = useAppDispatch();
-    const [handleAddIdToFunction] = useIdFunction();
+	const dispatch = useAppDispatch();
+	const [handleAddIdToFunction] = useIdFunction();
 
-    const handleAddMoviesToWatchlist = () => {
-        dispatch(updateMovies([{ id, title, poster_path, voteAverage }]));
-    };
+	const handleAddMoviesToWatchlist = () => {
+		dispatch(updateMovies([{ id, title, poster_path, voteAverage }]));
+	};
 
-    const IMAGE_PATH_URL: string = 'https://image.tmdb.org/t/p/w500/';
+	const ratingVote = voteAverage?.toString()?.slice(0, 3);
 
-    return (
-        <div className={styles.slider__cards}>
-            <div className={styles.slider__card}>
-                <p className={styles.slider__movie__name}>
-                    {title.length > 17 ? `${title.slice(0, 15)}...` : title}
-                </p>
-                <div className={styles.slider__episode__count}>
-                    <p className={styles.slider__episode__name}>Rating</p>
-                    <p className={styles.slider__episode__name}>
-                        {Math.ceil(voteAverage)}/10 stars
-                    </p>
-                </div>
-                <div className={styles.slider__episode__btn}>
-                    <button
-                        onClick={handleAddMoviesToWatchlist}
-                        className={styles.slider__plus__btn}
-                    >
-                        +
-                    </button>
-                    <Link to="watchTrailer">
-                        <button
-                            className={styles.slider__wathc__btn}
-                            onClick={() => handleAddIdToFunction(id)}
-                        >
-                            Watch
-                        </button>
-                    </Link>
-                </div>
-            </div>
-            <img
-                src={`${IMAGE_PATH_URL}${poster_path}`}
-                alt="rick"
-                className={styles.slider__list__image}
-            />
-        </div>
-    );
+	const IMAGE_PATH_URL: string = 'https://image.tmdb.org/t/p/w500/';
+
+	return (
+		<div className={styles.slider__cards}>
+			<div className={styles.slider__list}>
+				<img
+					src={`${IMAGE_PATH_URL}${poster_path}`}
+					alt="rick"
+					className={styles.slider__list__image}
+				/>
+				<div className={styles.slider__list__title}>
+					<h1 className={styles.slider__list__name}>{title}</h1>
+					<p className={styles.slider__list__vote}>{ratingVote}</p>
+				</div>
+				<div className={styles.slider__list__button}>
+					<button
+						className={styles.slider__list__plus}
+						onClick={handleAddMoviesToWatchlist}
+					>
+						+
+					</button>
+					<Link to="watchTrailer">
+						<button
+							className={styles.slider__list__watch}
+							onClick={() => handleAddIdToFunction(id)}
+						>
+							Watch
+						</button>
+					</Link>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default MovieMainCard;

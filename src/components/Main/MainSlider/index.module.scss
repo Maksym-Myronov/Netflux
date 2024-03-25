@@ -1,7 +1,7 @@
 @import '../../../styles/variablse';
 @import '../../../styles/mixins';
 
-.slider{
+.slider {
   color: $white;
   margin: 20px 40px 20px 60px;
 
@@ -66,7 +66,6 @@
   }
 
   &__slider__block {
-    position: relative;
     @include d-flex(null, space-between, null);
     padding: 0 40px 0 0;
   }
@@ -81,53 +80,68 @@
     font-weight: 600;
   }
 
-  &__episode__count {
-    margin: 5px 0 160px 0;
-  }
+  &__list {
+    position: relative;
 
-  &__episode__count, &__episode__btn {
-    @include d-flex(null, space-between, null);
-    width: 190px;
-  }
+    &__image {
+      width: 230px;
+      height: 300px;
+      border-radius: 15px;
+    }
 
-  &__card {
-    position: fixed;
-    padding: 20px 30px;
-  }
+    &__title {
+      position: absolute;
+      top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 230px;
+      padding: 10px;
+    }
 
-  &__plus__btn {
-    background: #898989;
-    font-weight: 600;
-    padding: 12px 20px;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: $white;
-  }
+    &__name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      max-width: 180px;
+      overflow-wrap: break-word;
+    }
 
-  &__movie__name {
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
+    &__vote {
+      font-size: 1rem;
+      color: #90EE90;
+      background: #21242D;
+      font-weight: 600;
+      border: 1px solid white;
+      border-radius: 4px;
+      padding: 1px 3px;
+      height: 28px;
+    }
 
-  &__episode__name {
-    font-size: 1rem;
-    color: $white;
-    font-weight: 600;
-  }
+    &__button {
+      position: absolute;
+      top: 220px;
+      display: flex;
+      justify-content: space-between;
+      width: 230px;
+      padding: 10px;
+    }
 
-  &__wathc__btn {
-    background: #00B9AE;
-    font-weight: 600;
-    padding: 16px 30px;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
+    &__plus {
+      background: #898989;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: $white;
+    }
 
-  &__list__image {
-    width: 230px;
-    height: 300px;
-    border-radius: 15px;
+    &__watch {
+      background: #00B9AE;
+      font-weight: 600;
+      padding: 16px 30px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
   }
 }
