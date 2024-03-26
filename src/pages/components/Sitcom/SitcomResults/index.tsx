@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useIdFunction } from '../../../../hooks/useIdFunction';
-// Styles
 import styles from '../../Watchlist/index.module.scss';
 
-export const TopRatedCards: React.FC = ({ title, rating, posterPath, id }) => {
-	const [handleAddIdToFunction] = useIdFunction();
-
+export const SitcomResults: React.FC = ({
+	title,
+	rating,
+	posterPath,
+	id,
+	handleAddIdToFunction
+}) => {
 	return (
 		<div className={styles.watchlist__parent}>
 			<div className={styles.watchlist__cards}>
