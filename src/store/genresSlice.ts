@@ -26,9 +26,9 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const fetchGenresMovies = createAsyncThunk(
 	'genres/fetchGenresMovies',
-	async () => {
+	async (value) => {
 		const response = await fetch(
-			'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=12',
+			`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${value}`,
 			{
 				method: 'GET',
 				headers: {
@@ -58,7 +58,7 @@ const genresSlice = createSlice({
 				fetchGenresMovies.fulfilled,
 				(state, action: PayloadAction<GeneralGenres[]>) => {
 					state.status = 'succeeded';
-					state.genres = action.payload; // Оновлюємо genres з отриманими даними
+					state.genres = action.payload;
 				}
 			)
 			.addCase(fetchGenresMovies.rejected, (state) => {

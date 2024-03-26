@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/useStore';
 import { fetchGenresId } from '../../../store/genresIdSlice';
+import { fetchGenresMovies } from '../../../store/genresSlice';
+import { useGetImage } from '../../../hooks/useGetImage';
 // Images
 import bell from '../../../assets/images/Notification.svg';
 import iconLogo from '../../../assets/images/Profile Picture.svg';
@@ -12,23 +14,55 @@ import lineImage from '../../../assets/images/Progress.svg';
 import movieImage from '../../../assets/images/Picture.svg';
 // Styles
 import styles from './index.module.scss';
-import { fetchGenresMovies } from '../../../store/genresSlice';
 
 export const RightSideBar: React.FC = () => {
 	const { user, isAuthenticated } = useAuth0();
-	const genresList = useAppSelector((state) => state.genres);
+	const [currentIndex, setCurrentIndex] = useState(0);
 	const genresId = useAppSelector((state) => state.genresId);
 	const dispatch = useAppDispatch();
+	const [renderImage] = useGetImage();
+
 	useEffect(() => {
 		dispatch(fetchGenresMovies());
 		dispatch(fetchGenresId());
 	}, [dispatch]);
-	const genresImages = genresId?.genresId?.genres?.map((item) => item.name);
 
 	const userName: string =
 		user && user.given_name
 			? JSON.stringify(user.given_name).replace(/"/g, '')
 			: '';
+
+	const handleCheckId = (id) => {
+		dispatch(fetchGenresMovies(id));
+	};
+
+	const genresArray = genresId?.genresId?.genres;
+
+	const getToPrevPage = () => {
+		const newIndex = currentIndex - 2 < 0 ? 0 : currentIndex - 2;
+		setCurrentIndex(newIndex);
+	};
+
+	const getNextPage = () => {
+		const newIndex =
+			currentIndex + 2 >= genresArray?.length
+				? genresArray?.length - 1
+				: currentIndex + 2;
+		setCurrentIndex(newIndex);
+	};
+
+	const imagesS = genresArray
+		?.slice(currentIndex, currentIndex + 4)
+		?.map((item) => (
+			<div
+				key={item.id}
+				onClick={() => handleCheckId(item.id)}
+				className={styles.menu__categories__sitcom}
+			>
+				<img src={renderImage(item.name)} alt="as" className={styles.images} />
+				<h1 className={styles.menu__categories__title}>{item.name}</h1>
+			</div>
+		));
 
 	return (
 		<div className={styles.menu}>
@@ -102,10 +136,10 @@ export const RightSideBar: React.FC = () => {
 			</div>
 			<div className={styles.menu__continue}>
 				<p className={styles.menu__continue__text}>Genres</p>
-				<button className={styles.menu__button}>
+				<button className={styles.menu__button} onClick={getToPrevPage}>
 					<img src={leftArrow} alt="leftArrow" />
 				</button>
-				<button className={styles.menu__button}>
+				<button className={styles.menu__button} onClick={getNextPage}>
 					<img src={rightArrow} alt="rightArrow" />
 				</button>
 				<div className={styles.menu__slider}>
@@ -115,23 +149,10 @@ export const RightSideBar: React.FC = () => {
 					</button>
 				</div>
 			</div>
-			<div className={styles.menu__list}>
-				<div className={styles.menu__categories}>
-					<p>Drama</p>
-				</div>
-				<div className={styles.menu__categories__thriller}>
-					<p>Thriller</p>
-				</div>
-			</div>
-			<div className={styles.menu__list}>
-				<Link to="sitcom">
-					<div className={styles.menu__categories__sitcom}>
-						<p>Sitcom</p>
-					</div>
+			<div>
+				<Link to="sitcom" className={styles.menu__list}>
+					{imagesS}
 				</Link>
-				<div className={styles.menu__categories__superhero}>
-					<p>Superhero</p>
-				</div>
 			</div>
 		</div>
 	);

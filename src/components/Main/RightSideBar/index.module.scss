@@ -110,45 +110,8 @@
     font-size: 0.9rem;
   }
 
-  &__categories {
-    background-image: url("src/assets/images/pictureDrama.svg");
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    width: 210px;
-    height: 99px;
-    margin: 0 0 20px 0;
-    font-weight: 600;
-    @include d-flex(null, center, center);
-    cursor: pointer;
-  }
-
   &__categories__sitcom {
-    background-image: url("src/assets/images/Picturesitcom.svg");
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    width: 170px;
-    height: 99px;
-    font-weight: 600;
-    cursor: pointer;
-    @include d-flex(null, center, center);
-  }
-
-  &__categories__thriller {
-    background-image: url("src/assets/images/scherlok.svg");
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    @include d-flex(null, center, center);
-    width: 210px;
-    height: 99px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  &__categories__superhero {
-    background-image: url("src/assets/images/Superhero.svg");
-    background-repeat: no-repeat;
-    border-radius: 15px;
-    @include d-flex(null, center, center);
+    position: relative;
     width: 170px;
     height: 99px;
     font-weight: 600;
@@ -156,12 +119,25 @@
   }
 
   &__list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+
+  &__categories__title {
+    position: absolute;
+    top: 45px;
+    left: 60px;
   }
 
   button {
     cursor: pointer;
   }
 
+}
+
+.images {
+  width: 170px;
+  height: 100px;
+  border-radius: 15px;
 }
