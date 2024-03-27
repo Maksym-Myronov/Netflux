@@ -14,6 +14,7 @@ import lineImage from '../../../assets/images/Progress.svg';
 import movieImage from '../../../assets/images/Picture.svg';
 // Styles
 import styles from './index.module.scss';
+import { GenreSlider } from './GenreSlider';
 
 export const RightSideBar: React.FC = () => {
 	const { user, isAuthenticated } = useAuth0();
@@ -32,10 +33,6 @@ export const RightSideBar: React.FC = () => {
 			? JSON.stringify(user.given_name).replace(/"/g, '')
 			: '';
 
-	const handleCheckId = (id) => {
-		dispatch(fetchGenresMovies(id));
-	};
-
 	const genresArray = genresId?.genresId?.genres;
 
 	const getToPrevPage = () => {
@@ -45,24 +42,11 @@ export const RightSideBar: React.FC = () => {
 
 	const getNextPage = () => {
 		const newIndex =
-			currentIndex + 2 >= genresArray?.length
-				? genresArray?.length - 1
+			genresArray && currentIndex + 2 >= genresArray.length
+				? genresArray.length - 1
 				: currentIndex + 2;
 		setCurrentIndex(newIndex);
 	};
-
-	const imagesS = genresArray
-		?.slice(currentIndex, currentIndex + 4)
-		?.map((item) => (
-			<div
-				key={item.id}
-				onClick={() => handleCheckId(item.id)}
-				className={styles.menu__categories__sitcom}
-			>
-				<img src={renderImage(item.name)} alt="as" className={styles.images} />
-				<h1 className={styles.menu__categories__title}>{item.name}</h1>
-			</div>
-		));
 
 	return (
 		<div className={styles.menu}>
@@ -143,7 +127,9 @@ export const RightSideBar: React.FC = () => {
 					<img src={rightArrow} alt="rightArrow" />
 				</button>
 				<div className={styles.menu__slider}>
-					<p className={styles.menu__see__more}>See More</p>
+					<Link to="/allGenres" className={styles.menu__see__more}>
+						See All
+					</Link>
 					<button className={styles.menu__button}>
 						<img src={rightArrow} alt="rightArrow" />
 					</button>
@@ -151,7 +137,16 @@ export const RightSideBar: React.FC = () => {
 			</div>
 			<div>
 				<Link to="sitcom" className={styles.menu__list}>
-					{imagesS}
+					{genresArray
+						?.slice(currentIndex, currentIndex + 4)
+						?.map((item) => (
+							<GenreSlider
+								key={item.id}
+								name={item.name}
+								id={item.id}
+								renderImage={renderImage}
+							/>
+						))}
 				</Link>
 			</div>
 		</div>

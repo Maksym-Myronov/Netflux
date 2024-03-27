@@ -2,9 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../Watchlist/index.module.scss';
 
-export const SitcomResults: React.FC = ({
+interface MovieData {
+	id: number;
+	title: string;
+	posterPath: string;
+	handleAddIdToFunction: (id: number) => void;
+}
+
+export const SitcomResults: React.FC<MovieData> = ({
 	title,
-	rating,
 	posterPath,
 	id,
 	handleAddIdToFunction
@@ -18,9 +24,7 @@ export const SitcomResults: React.FC = ({
 					</p>
 					<div className={styles.watchlist__episode__count}>
 						<p className={styles.watchlist__episode__name}>Rating</p>
-						<p className={styles.watchlist__episode__name}>
-							{Math.ceil(rating)}/10 stars
-						</p>
+						<p className={styles.watchlist__episode__name}>/10 stars</p>
 					</div>
 					<div className={styles.watchlist__episode__btn}>
 						<Link to="/watchTrailer">

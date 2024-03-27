@@ -1,39 +1,35 @@
-import React, { ChangeEvent, useState } from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
-// Styles
-import styles from '../Watchlist/index.module.scss';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { SitcomResults } from './SitcomResults';
 import { useAppSelector } from '../../../hooks/useStore';
-import { useIdFunction } from '../../../hooks/useIdFunction.ts';
+import { useIdFunction } from '../../../hooks/useIdFunction';
+// Styles
+import styles from '../Watchlist/index.module.scss';
 
 export const Sitcom: React.FC = () => {
-	interface MovieData {
-		key: number;
-		id: number;
-		title: string;
-		poster_path: string;
-		handleAddIdToFunction: (id: number) => void;
-	}
-
 	const genresList = useAppSelector((state) => state.genres);
-	const data: object[] = genresList?.genres?.results;
-	console.log(data);
+	console.log(genresList);
+	const data = genresList?.genres?.results;
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const itemsPerPage: number = 8;
-
 	const startIndex: number = (currentPage - 1) * itemsPerPage;
 	const endIndex: number = startIndex + itemsPerPage;
-	const currentItems: object[] = data && data.slice(startIndex, endIndex);
+	const currentItems = data?.slice(startIndex, endIndex);
 	const [handleAddIdToFunction] = useIdFunction();
 
 	const handlePaginationChange = (
 		event: ChangeEvent<unknown>,
 		page: number
 	) => {
+		console.log(event);
 		setCurrentPage(page);
 	};
+
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [genresList]);
 
 	const theme = createTheme({
 		palette: {
@@ -68,7 +64,7 @@ export const Sitcom: React.FC = () => {
 				<ThemeProvider theme={theme}>
 					<Stack spacing={2}>
 						<Pagination
-							count={Math.ceil(data && data.length / itemsPerPage)}
+							count={Math.ceil(Number(data && data.length) / itemsPerPage)}
 							shape="rounded"
 							page={currentPage}
 							onChange={handlePaginationChange}
