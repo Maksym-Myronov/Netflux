@@ -4,7 +4,19 @@ import { useIdFunction } from '../../../../hooks/useIdFunction';
 // Styles
 import styles from '../../Watchlist/index.module.scss';
 
-export const TopRatedCards: React.FC = ({ title, rating, posterPath, id }) => {
+interface MovieData {
+	id: number;
+	title: string;
+	posterPath: string;
+	rating: number;
+}
+
+export const TopRatedCards: React.FC<MovieData> = ({
+	title,
+	rating,
+	posterPath,
+	id
+}) => {
 	const [handleAddIdToFunction] = useIdFunction();
 
 	return (

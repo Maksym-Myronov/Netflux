@@ -1,18 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-type GenresId = {
-	id: number;
-	name: string;
+type GenresState = {
+	genresId: {
+		genres: {
+			id: number;
+			name: string;
+		}[];
+	};
+	status: 'idle' | 'loading' | 'succeeded' | 'failed';
+	error: string | null;
 };
 
-type GenresIdArray = {
-	genresId: GenresId[];
-	status: string;
-	error: null;
-};
-
-const initialState: GenresIdArray = {
-	genresId: [],
+const initialState: GenresState = {
+	genresId: {
+		genres: []
+	},
 	status: 'idle',
 	error: null
 };

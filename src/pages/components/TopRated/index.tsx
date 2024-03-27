@@ -12,13 +12,13 @@ export const TopRated: React.FC = () => {
 	const topRatedMoviesList = useAppSelector(
 		(state) => state.topRatedMovies.rated
 	);
-	const data: object[] = topRatedMoviesList && topRatedMoviesList.results;
+	const data = topRatedMoviesList && topRatedMoviesList.results;
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const itemsPerPage: number = 8;
 
 	const startIndex: number = (currentPage - 1) * itemsPerPage;
 	const endIndex: number = startIndex + itemsPerPage;
-	const currentItems: object[] = data && data.slice(startIndex, endIndex);
+	const currentItems = data && data.slice(startIndex, endIndex);
 
 	const dispatch = useAppDispatch();
 
@@ -29,6 +29,7 @@ export const TopRated: React.FC = () => {
 		event: React.ChangeEvent<unknown>,
 		page: number
 	) => {
+		console.log(event);
 		setCurrentPage(page);
 	};
 
@@ -52,15 +53,22 @@ export const TopRated: React.FC = () => {
 	return (
 		<div className={styles.watchlist}>
 			{currentItems &&
-				currentItems.map((item) => (
-					<TopRatedCards
-						key={item.id}
-						id={item.id}
-						title={item.title}
-						posterPath={item.poster_path}
-						rating={item.vote_average}
-					/>
-				))}
+				currentItems.map(
+					(item: {
+						id: number;
+						title: string;
+						poster_path: string;
+						vote_average: number;
+					}) => (
+						<TopRatedCards
+							key={item.id}
+							id={item.id}
+							title={item.title}
+							posterPath={item.poster_path}
+							rating={item.vote_average}
+						/>
+					)
+				)}
 			<div className={styles.watchlist__pagination}>
 				<ThemeProvider theme={theme}>
 					<Stack spacing={2}>

@@ -1,23 +1,25 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type GeneralGenres = {
-	id: number;
-	originalTitle: string;
-	overview: string;
-	posterPath: string;
-	title: string;
-	voteAverage: number;
-	releaseDate: string;
-};
-
 type Genres = {
-	genres: GeneralGenres[];
+	genres: {
+		results: {
+			id: number;
+			originalTitle: string;
+			overview: string;
+			poster_path: string;
+			title: string;
+			voteAverage: number;
+			releaseDate: string;
+		}[];
+	};
 	status: string;
 	error: null;
 };
 
 const initialState: Genres = {
-	genres: [],
+	genres: {
+		results: []
+	},
 	status: 'idle',
 	error: null
 };
@@ -26,7 +28,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const fetchGenresMovies = createAsyncThunk(
 	'genres/fetchGenresMovies',
-	async (value) => {
+	async (value?: number) => {
 		const response = await fetch(
 			`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${value}`,
 			{
@@ -37,9 +39,11 @@ export const fetchGenresMovies = createAsyncThunk(
 				}
 			}
 		);
+
 		if (!response.ok) {
 			throw new Error('Network response was not ok');
 		}
+
 		const data = await response.json();
 		return data;
 	}
@@ -56,7 +60,7 @@ const genresSlice = createSlice({
 			})
 			.addCase(
 				fetchGenresMovies.fulfilled,
-				(state, action: PayloadAction<GeneralGenres[]>) => {
+				(state, action: PayloadAction<Genres['genres']>) => {
 					state.status = 'succeeded';
 					state.genres = action.payload;
 				}

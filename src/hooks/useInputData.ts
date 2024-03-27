@@ -6,7 +6,7 @@ export const useInputData = () => {
 	const [text, setText] = useState<string>('');
 	const searchMovie = useAppSelector((state) => state.search);
 	const sortedMoviesArray = searchMovie?.search?.results
-		?.map((item) => item)
+		?.map((item: object) => item)
 		.sort((b) => text.localeCompare(b));
 	const dispatch = useAppDispatch();
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
